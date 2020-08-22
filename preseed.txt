@@ -118,9 +118,8 @@ d-i pkgsel/include string openssh-server ca-certificates acpid acpi-support-base
 # Allowed values: none, safe-upgrade, full-upgrade
 d-i pkgsel/upgrade select safe-upgrade 
 
-# This is fairly safe to set, it makes grub install automatically to the MBR
-# if no other operating system is detected on the machine.
-d-i grub-installer/only_debian boolean true
+# set up grub on disk 0
+d-i grub-installer/bootdev  string (hd0,0)
 
 # Avoid that last message about the install being complete.
 d-i finish-install/reboot_in_progress note
