@@ -113,7 +113,7 @@ d-i base-installer/install-recommends boolean false
 tasksel tasksel/first multiselect
 
 # Individual additional packages to install
-d-i pkgsel/include string openssh-server ca-certificates acpid acpi-support-base build-essential
+d-i pkgsel/include string openssh-server ca-certificates acpid acpi-support-base build-essential vim tmux ufw
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
 d-i pkgsel/upgrade select safe-upgrade 
