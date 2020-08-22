@@ -107,9 +107,13 @@ d-i apt-setup/services-select multiselect security, updates
 d-i apt-setup/security_host string security.debian.org
 
 ### Package selection
-tasksel tasksel/first standard
+
+#don't isntall recommeded packages
+d-i base-installer/install-recommends boolean false
+tasksel tasksel/first multiselect
+
 # Individual additional packages to install
-d-i pkgsel/include string openssh-server build-essential
+d-i pkgsel/include string openssh-server ca-certificates acpid acpi-support-base build-essential
 # Whether to upgrade packages after debootstrap.
 # Allowed values: none, safe-upgrade, full-upgrade
 d-i pkgsel/upgrade select safe-upgrade 
@@ -117,12 +121,6 @@ d-i pkgsel/upgrade select safe-upgrade
 # This is fairly safe to set, it makes grub install automatically to the MBR
 # if no other operating system is detected on the machine.
 d-i grub-installer/only_debian boolean true
-
-### Finishing up the installation
-# During installations from serial console, the regular virtual consoles
-# (VT1-VT6) are normally disabled in /etc/inittab. Uncomment the next
-# line to prevent this.
-#d-i finish-install/keep-consoles boolean true
 
 # Avoid that last message about the install being complete.
 d-i finish-install/reboot_in_progress note
