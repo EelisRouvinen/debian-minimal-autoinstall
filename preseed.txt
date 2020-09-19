@@ -120,7 +120,7 @@ d-i pkgsel/upgrade select safe-upgrade
 
 # Due notably to potential USB sticks, the location of the MBR can not be
 # determined safely in general, so this needs to be specified:
-d-i grub-installer/bootdev  string /dev/sda
+#d-i grub-installer/bootdev  string /dev/sda
 
 # Avoid that last message about the install being complete.
 d-i finish-install/reboot_in_progress note
