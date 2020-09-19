@@ -118,8 +118,9 @@ d-i pkgsel/include string openssh-server ca-certificates acpid acpi-support-base
 # Allowed values: none, safe-upgrade, full-upgrade
 d-i pkgsel/upgrade select safe-upgrade 
 
-# set up grub on disk 0
-d-i grub-installer/bootdev  string (hd0,0)
+# Due notably to potential USB sticks, the location of the MBR can not be
+# determined safely in general, so this needs to be specified:
+d-i grub-installer/bootdev  string /dev/sda
 
 # Avoid that last message about the install being complete.
 d-i finish-install/reboot_in_progress note
